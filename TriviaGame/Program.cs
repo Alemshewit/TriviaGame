@@ -22,7 +22,7 @@ namespace TriviaGame
             int totalPlayed = 0;
             bool keepPlaying = true;
             Random rng = new Random();
-            Console.WriteLine("What's your name?");
+            Console.Write("What's your name?===>> ");
             string userInput = Console.ReadLine();
             Console.WriteLine("Welcome to Trivia " + userInput);
 
@@ -30,26 +30,30 @@ namespace TriviaGame
             {
                 //get a random number between 1 and 5001 and store it in the 
                 //int variable askRand
+                Console.WriteLine("______________________________________________________________________");
+
                 int randQuestion = rng.Next(1, 5001);
 
                 Console.WriteLine("Question: " + AllQuestions[randQuestion].Question);
-                Console.WriteLine("What is the answer?");
+                Console.Write("What is the answer? =======>> ");
                 string userResponse = Console.ReadLine();
 
                 if (AllQuestions[randQuestion].Answer.ToLower() == userResponse.ToLower())
                 {
                     correctAnswer += 1;
                     totalPlayed += 1;
-                    Console.WriteLine("Good job! That's the right answer!");
-                    Console.Clear();
+                    Console.WriteLine("That's the right answer! GREAT JOB!");
+                    Console.WriteLine();
+                    Console.WriteLine("_____________________________________________________________");
+
                 }
-                else
+                else if(AllQuestions[randQuestion].Answer.ToLower() != userResponse.ToLower())
                 {
                     wrongAnswer += 1;
                     totalPlayed += 1;
-                    Console.WriteLine("Wrong Answer! Right answer is: " +AllQuestions[randQuestion].Answer);
-                    Console.Clear();
-                    
+                    Console.WriteLine("Wrong Answer! Right answer is: " + AllQuestions[randQuestion].Answer);
+                    Console.WriteLine("______________________________________________________________");
+
                 }
 
                 if (totalPlayed == 10)
